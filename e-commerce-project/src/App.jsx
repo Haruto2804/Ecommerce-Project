@@ -12,7 +12,7 @@ function App() {
         <Route index element={<HomePage />} />
         <Route path="checkout" element={<CheckoutPage />} />
         <Route path="order" element={<OrdersPage />} />
-        
+                
     </Routes >
     
     </>
