@@ -1,5 +1,6 @@
 import './OrdersPage.css'
 import { Header } from '../components/Header'
+import { NavLink } from 'react-router'
 
 export function OrdersPage() {
   return (
@@ -28,10 +29,10 @@ export function OrdersPage() {
           </div>
 
           <div className="right-section">
-            <a className="orders-link header-link" href="/order">
+            <NavLink className="orders-link header-link" href="/order">
 
               <span className="orders-text">Orders</span>
-            </a>
+            </NavLink>
 
             <a className="cart-link header-link" href="/checkout">
               <img className="cart-icon" src="images/icons/cart-icon.png" />
