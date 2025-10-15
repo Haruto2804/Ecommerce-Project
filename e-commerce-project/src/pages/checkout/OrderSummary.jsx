@@ -1,5 +1,6 @@
 import dayjs from "dayjs"
 import { formatMoney } from "../../utils/money"
+import { DeliveryOptions } from "./DeliveryOptions"
 export function OrderSummary( {cart, deliveryOption}) {
   return (
     <div className="order-summary">
@@ -10,7 +11,6 @@ export function OrderSummary( {cart, deliveryOption}) {
           })
 
         return (
-          <>
             <div key={cartItem.productId} className="cart-item-container">
               <div className="delivery-date">
                 Delivery date: {dayjs(selectedDeliveryOption.estimatedDeliveryTimeMs).format('dddd, MMMM D')}
@@ -42,40 +42,12 @@ export function OrderSummary( {cart, deliveryOption}) {
                   </div>
                 </div>
 
-                <div className="delivery-options">
-                  <div className="delivery-options-title">
-                    Choose a delivery option:
-                  </div>
-                  {deliveryOption.map((deliveryOption) => {
-                    let priceString = 'FREE Shipping';
-                    if (deliveryOption.priceCents > 0) {
-                      priceString = `$${formatMoney(deliveryOption.priceCents)} - Shipping`
-                    }
-                    return (
-                      <>
-                        <div className="delivery-option">
-                          <input type="radio"
-                            checked={deliveryOption.id === cartItem.deliveryOptionId}
-                            className="delivery-option-input"
-                            name={`delivery-option-${cartItem.productId}`} />
-                          <div>
-                            <div className="delivery-option-date">
-                              {dayjs(deliveryOption.estimatedDeliveryTimeMs).format('dddd, MMMM, D')}
-                            </div>
-                            <div key={deliveryOption.id} className="delivery-option-price">
-                              {priceString}
-                            </div>
-                          </div>
-                        </div>
-                      </>
-                    )
-                  })}
-                </div>
-              </div>
-            </div>
+                <DeliveryOptions cartItem={cartItem} deliveryOption =  {deliveryOption}/>
 
-          </>
-        )
+              </div>
+              
+            </div>
+        );
       })}
 
     </div>
