@@ -151,3 +151,6 @@
   text-decoration: underline;
   font-weight: bold;
 }
+.header .cart-link.active {
+  text-decoration: none; /* Thêm dòng này để chắc chắn */
+}
