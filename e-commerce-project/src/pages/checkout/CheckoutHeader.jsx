@@ -1,17 +1,8 @@
 import CheckoutLockIcon from '../../assets/images/icons/checkout-lock-icon.png';
 import { Link } from 'react-router-dom'
-import {useMemo } from 'react';
 import Logo from '../../assets/images/logo.png';
 import MobileLogo from '../../assets/images/mobile-logo.png';
-export function CheckoutHeader({ cart }) {
-  const totalQuantity = useMemo(() => {
-    let total = 0;
-    console.log('Dang tinh toan lai so luong')
-    cart.forEach((cartItem) => {
-      total += cartItem.quantity;
-    });
-    return total;
-  },[cart])
+export function CheckoutHeader({totalQuantity} ) {
   return (
     <div className="checkout-header">
       <div className="header-content">
