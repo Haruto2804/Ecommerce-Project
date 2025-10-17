@@ -142,6 +142,7 @@ max-width and max-height to 100% to stay inside container. */
 be invisible. Use JavaScript to change the
 opacity and make it visible. */
   opacity: 0;
+  transition: all ease-in-out 1s;
 }
 
 .home-page .added-to-cart img {

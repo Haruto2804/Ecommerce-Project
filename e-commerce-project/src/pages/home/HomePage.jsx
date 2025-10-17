@@ -7,6 +7,7 @@ import { ProductsGrid } from './ProductsGrid.jsx';
 
 
 export function HomePage({ cart, loadCart }) {
+
   const [products, setProducts] = useState([]);
   useEffect(() => {
     const getHomeData = async () => {

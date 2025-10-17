@@ -3,6 +3,7 @@ import { formatMoney } from "../../utils/money";
 import { useState } from "react";
 import CheckmarkIcon from '../../assets/images/icons/checkmark.png';
 export function Product({ product, loadCart }) {
+  const [showAddedMessage, setShowAddedMessage] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const addToCart = async () => {
 
@@ -11,11 +12,19 @@ export function Product({ product, loadCart }) {
       quantity: quantity
     });
     await loadCart();
+    setShowAddedMessage(true);
+
+
+    setTimeout(()=> {
+      setShowAddedMessage(false);
+    },2000)
+
+
   }
   const selectQuantity = (event) => {
-          const quantitySelected = Number(event.target.value);
-          setQuantity(quantitySelected);
-        }
+    const quantitySelected = Number(event.target.value);
+    setQuantity(quantitySelected);
+  }
   return (
     <div key={product.id} className="product-container">
       <div className="product-image-container">
@@ -40,7 +49,7 @@ export function Product({ product, loadCart }) {
       </div>
 
       <div className="product-quantity-container">
-        <select value={quantity} onChange= {selectQuantity}>
+        <select value={quantity} onChange={selectQuantity}>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -56,7 +65,8 @@ export function Product({ product, loadCart }) {
 
       <div className="product-spacer"></div>
 
-      <div className="added-to-cart">
+      <div className="added-to-cart" style = {{
+        opacity: showAddedMessage ? 1 : 0 }}> 
         <img src={CheckmarkIcon} />
         Added
       </div>
@@ -65,7 +75,7 @@ export function Product({ product, loadCart }) {
         onClick={async () => {
           addToCart();
         }}
-        className="add-to-cart-button button-primary">
+        className="add-to-cart-button button-primary" >
 
         Add to Cart
       </button>
